@@ -17,7 +17,6 @@ RSpec.describe 'Doctor Show Page', type: :feature do
   describe "US 1 when I visit /doctors/:id" do
   it " I see all of that doctor's information including:name, specialty university where they got their doctorate and hospital they work at" do
     visit "/doctors/#{dr_quinn.id}"
-    save_and_open_page
 
     within(".doctor_info") do
       expect(page).to have_content("Name: Michaela Quinn")
