@@ -32,6 +32,7 @@ RSpec.describe 'Doctor Show Page', type: :feature do
       visit "/doctors/#{dr_quinn.id}"
 
       within(".patient_info") do
+        expect(page).to have_content("Patient Seen:")
         expect(page).to have_content("Name: Amy S")
         expect(page).to have_content("Name: Katie L")
         expect(page).to_not have_content("Name: Brandon J")

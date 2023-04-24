@@ -1,9 +1,16 @@
 <h1> Doctor Show Page </h1>
 
 <div class= "doctor_info">
-<p> Name: <%= @doctor.name  %>
-<li> Specialty: <%= @doctor.specialty %></li>
-<li> University: <%= @doctor.university %></li>
-<li> Hospital: <%= @doctor.hospital.name %></li>
+  <h3> Name: <%= @doctor.name  %></h3>
+  <li> Specialty: <%= @doctor.specialty %></li>
+  <li> University: <%= @doctor.university %></li>
+  <li> Hospital: <%= @doctor.hospital.name %></li>
+</div>
 
-</ol>
+<div class= "patient_info">
+<p> Patient Seen: </p>
+  <% @doctor.patients.each do |patient| %>
+  <li>Name: <%= patient.name  %></li>
+  <% end %>
+
+
