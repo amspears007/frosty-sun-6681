@@ -23,6 +23,8 @@ RSpec.describe 'Doctor Show Page', type: :feature do
       expect(page).to have_content("Name: Michaela Quinn")
       expect(page).to have_content("Specialty: Rural Health")
       expect(page).to have_content("University: Boston")
+      expect(page).to have_content("Hospital: DenverHealth")
+
       expect(page).to_not have_content("Name:Gregory House")
         end
       end
