@@ -15,7 +15,7 @@ RSpec.describe 'Doctor Show Page', type: :feature do
   let!(:dr_mccoy_brandon) {DoctorPatient.create!(doctor_id: dr_mccoy.id, patient_id: brandon.id)}
 
   describe "US 1 when I visit /doctors/:id" do
-  it " I see all of that doctor's information including:name, specialty university where they got their doctorate" do
+  it " I see all of that doctor's information including:name, specialty university where they got their doctorate and hospital they work at" do
     visit "/doctors/#{dr_quinn.id}"
     save_and_open_page
 
@@ -24,10 +24,18 @@ RSpec.describe 'Doctor Show Page', type: :feature do
       expect(page).to have_content("Specialty: Rural Health")
       expect(page).to have_content("University: Boston")
       expect(page).to have_content("Hospital: DenverHealth")
-
       expect(page).to_not have_content("Name:Gregory House")
         end
       end
-    end
 
+    it 'I see the names of all of the patients this doctor has' do
+      visit "/doctors/#{dr_quinn.id}"
+
+      within(".patient_info") do
+        expect(page).to have_content("Name: Amy S")
+        expect(page).to have_content("Name: Katie L")
+        expect(page).to_not have_content("Name: Brandon J")
+      end
+    end
   end
+end
