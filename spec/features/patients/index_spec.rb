@@ -20,12 +20,17 @@ RSpec.describe 'patient index', type: :feature do
       visit "/patients"
       save_and_open_page
 
+      within("h3") do
+        expect(page).to have_content("Adult Patient Names")
+      end
+
       expect(page).to have_content("Amy S")
       expect(page).to have_content("Katie L")
       expect(page).to have_content("Brandon J")
       expect(page).to_not have_content("Penny")
       expect(amy.name).to appear_before(katie.name)
       expect(brandon.name).to appear_before(katie.name)
+        
       end
     end
   end
